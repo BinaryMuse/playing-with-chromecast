@@ -1,0 +1,38 @@
+<html data-cast-api-enabled="true" ng-app="musecast">
+<head>
+  <title>Chromecast App</title>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js">
+  </script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+<div ng-controller='ReceiverController' ng-show="api">
+  <div>
+    Activity Status: {{ activity.status }}
+  </div>
+
+  <div>
+    Receivers:
+    <div ng-repeat="receiver in receivers">
+      <a href='' ng-click="launch(receiver)">{{ receiver.name }}</a>
+    </div>
+  </div>
+
+  <div ng-show="activity">
+    <div>
+      Text: <input type='text' ng-model='txtToSend' size='50'>
+      <button ng-click='setText(txtToSend)'>Set Text</button>
+    </div>
+    <div>
+      Image URL: <input type='text' ng-model='imgToSend' size='50'>
+      <button ng-click='setImage(imgToSend)'>Set Image</button>
+    </div>
+
+    <a href='' ng-click='stopActivity()'>Stop Activity</a>
+  </div>
+</div>
+
+</body>
+</html>
